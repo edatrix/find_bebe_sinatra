@@ -1,10 +1,10 @@
-require 'bundler'
-Bundler.require
-
 class FindBebe < Sinatra::Base
+  configure :development do
+    register Sinatra::Reloader
+  end
 
   get '/' do
-    "what's up"
+    erb :index
   end
 
 end
