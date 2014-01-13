@@ -3,6 +3,25 @@
     <title>Find Bebe</title>
   </head>
   <body>
-    <h1>another new app!</h1>
+    <h1>Find Bebe</h1>
+    
+    <form action='/' method='POST'>
+      <p>
+        Please enter your pet's description
+      </p>
+      <input type='text' name='pet_name'/><br>
+      <textarea name='pet_description'></textarea><br>
+      <input type='submit'/>
+    </form>
+
+    <h3>Active Pet Listings</h3>
+    <ul>
+      <% pets.each do |pet| %>
+      <li>
+        <%= pet.name %>
+        <%= pet.description %>
+      </li>
+      <% end %>
+    </ul>
   </body>
 </html>

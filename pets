@@ -1,0 +1,6 @@
+---
+pets:
+- :name: beatrix
+  :description: small calico cat
+- :name: sandy
+  :description: german shepherd dog
