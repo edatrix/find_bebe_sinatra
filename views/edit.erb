@@ -5,12 +5,7 @@
   <body>
     <h1>Find Bebe</h1>
 
-    <form action="/<%= id %>" method="POST">
-      <p>Edit your listing</p>
-        <input type="hidden" name="_method" value="PUT" />
-        <input type="text" name="pet[name]" value="<%= pet.name %>"/><br/>
-        <textarea name='pet[description]'></textarea><br>
-        <input type='submit'/>
-    </form>
+    <%= erb :form, locals: {pet: pet, id: id, mode: "edit"} %>
+    
   </body>
 </html>

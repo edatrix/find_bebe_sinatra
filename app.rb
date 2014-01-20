@@ -13,7 +13,7 @@ class FindBebe < Sinatra::Base
   end
 
   get '/' do
-    erb :index, locals: {pets: Pet.all}
+    erb :index, locals: {pets: Pet.all, pet: Pet.new}
   end
 
   delete '/:id' do |id|

@@ -1,0 +1,15 @@
+<form action="/<%= id if mode == "edit" %>" method="POST">
+  <p>
+    <% if mode == "edit" %>
+      Edit pet info:
+    <% else %>
+      Please enter pet info here
+    <% end %>
+  </p>
+  <% if mode == "edit" %>
+    <input type="hidden" name="_method" value="PUT" />
+  <% end %>
+  <input type="text" name="pet[name]" value="<%= pet.name %>"/><br/>
+  <textarea name="pet[description]"><%= pet.description %></textarea><br/>
+  <input type="submit"/>
+</form>

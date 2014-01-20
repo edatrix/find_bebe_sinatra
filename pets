@@ -1,10 +1,14 @@
 ---
 pets:
 - name: beatrix
-  description: calico cat
+  description: calico cat who is gorgeous.
 - name: little sandy cohen
   description: german shepherd
 - name: yeager
   description: giant yellow lab that lives on a farm.
 - name: edgar
   description: fat black cat
+- name: guinness
+  description: black lab
+- name: bruiser
+  description: tiny chihuahua
