@@ -1,6 +1,10 @@
 ---
 pets:
-- :name: beatrix
-  :description: updating this idea
-- :name: sandy
-  :description: german shepherd dog
+- name: beatrix
+  description: calico cat
+- name: little sandy cohen
+  description: german shepherd
+- name: yeager
+  description: giant yellow lab that lives on a farm.
+- name: edgar
+  description: fat black cat

@@ -4,14 +4,14 @@ class Pet
 
   attr_reader :name, :description
 
-  def initialize(name, description)
-    @name = name
-    @description = description
+  def initialize(attributes = {})
+    @name = attributes["name"]
+    @description = attributes["description"]
   end
 
   def self.all
     raw_pets.map do |data|
-      new(data[:name], data[:description])
+      new(data)
     end
   end
 
@@ -23,8 +23,8 @@ class Pet
 
   def save
     database.transaction do |db|
-      db['pets'] ||= []
-      db['pets'] << {name: name, description: description}
+      database['pets'] ||= []
+      database['pets'] << {"name" => name, "description" => description}
     end
   end
 
@@ -36,7 +36,7 @@ class Pet
 
   def self.find(id)
     raw_pet = find_raw_pet(id)
-    new(raw_pet[:name], raw_pet[:description])
+    new(raw_pet)
   end
 
   def self.find_raw_pet(id)

@@ -7,8 +7,7 @@ class FindBebe < Sinatra::Base
   require './pet'
 
   post '/' do
-    pet = Pet.new(params['pet_name'],
-                  params['pet_description'])
+    pet = Pet.new(params[:pet])
     pet.save
     redirect '/'
   end
@@ -29,11 +28,7 @@ class FindBebe < Sinatra::Base
   end
 
   put '/:id' do |id|
-    data = {
-      :name => params['pet_name'],
-      :description => params['pet_description']
-    }
-    Pet.update(id.to_i, data)
+    Pet.update(id.to_i, params[:pet])
     redirect '/'
   end
 
