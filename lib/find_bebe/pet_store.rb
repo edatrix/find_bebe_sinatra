@@ -1,30 +1,23 @@
 require 'yaml/store'
 
-class Pet
-
-  attr_reader :name, :description
-
-  def initialize(attributes = {})
-    @name = attributes["name"]
-    @description = attributes["description"]
-  end
+class PetStore
 
   def self.all
     raw_pets.map do |data|
-      new(data)
+      Pet.new(data)
+    end
+  end
+
+  def self.create(attributes)
+    database.transaction do
+      database['pets'] ||= []
+      database['pets'] << attributes
     end
   end
 
   def self.raw_pets
     database.transaction do |db|
       db['pets'] || []
-    end
-  end
-
-  def save
-    database.transaction do |db|
-      database['pets'] ||= []
-      database['pets'] << {"name" => name, "description" => description}
     end
   end
 
@@ -36,7 +29,7 @@ class Pet
 
   def self.find(id)
     raw_pet = find_raw_pet(id)
-    new(raw_pet)
+    Pet.new(raw_pet)
   end
 
   def self.find_raw_pet(id)
@@ -52,11 +45,7 @@ class Pet
   end
 
   def self.database
-    @database ||=YAML::Store.new("pets")
-  end
-
-  def database
-    Pet.database
+    @database ||= YAML::Store.new("db/pets")
   end
 
 end
